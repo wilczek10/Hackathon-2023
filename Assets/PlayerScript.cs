@@ -6,34 +6,57 @@ using UnityEngine;
 public class PlayerScript : MonoBehaviour
 {
     /// <summary>
-    /// 1 - The speed of the ship
+    /// The speed of the ship
     /// </summary>
-    public float speed = 20f; // Changed to a single speed value
+    public float speed = 20f;
 
     /// <summary>
-    /// 2 - Store the movement
+    /// Store the horizontal movement
     /// </summary>
-    private float movement;
+    private float horizontalMovement;
+
+    /// <summary>
+    /// Store the vertical movement
+    /// </summary>
+    private float verticalMovement;
 
     void Update()
     {
-        // 3 - Retrieve axis information
+        // Retrieve axis information
         float inputX = Input.GetAxis("Horizontal");
+        float inputY = Input.GetAxis("Vertical");
 
-        // 4 - Movement per direction
-        movement = speed * inputX;
+        // Update horizontal movement
+        horizontalMovement = speed * inputX;
+
+        // Update vertical movement
+        verticalMovement = speed * inputY;
 
         // Optional: To slow down the movement when not pressing any keys
         if (inputX == 0)
         {
-            movement = 0f;
+            horizontalMovement = 0f;
+        }
+
+        if (inputY == 0)
+        {
+            verticalMovement = 0f;
+        }
+
+        // Flip the sprite based on the horizontal movement
+        if (inputX < 0)
+        {
+            transform.localScale = new Vector3(-1f, 1f, 1f);
+        }
+        else if (inputX > 0)
+        {
+            transform.localScale = new Vector3(1f, 1f, 1f);
         }
     }
 
     void FixedUpdate()
     {
-        // 5 - Move the game object
-        GetComponent<Rigidbody2D>().velocity = new Vector2(movement, GetComponent<Rigidbody2D>().velocity.y);
+        // Move the game object
+        GetComponent<Rigidbody2D>().velocity = new Vector2(horizontalMovement, verticalMovement);
     }
 }
-   
