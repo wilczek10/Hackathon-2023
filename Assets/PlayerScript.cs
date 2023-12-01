@@ -36,3 +36,4 @@ public class PlayerScript : MonoBehaviour
         GetComponent<Rigidbody2D>().velocity = new Vector2(movement, GetComponent<Rigidbody2D>().velocity.y);
     }
 }
+   
