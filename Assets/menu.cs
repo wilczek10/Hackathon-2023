@@ -8,18 +8,16 @@ public class MainMenu : MonoBehaviour
     public void PlayGame()
     {
         SceneManager.LoadScene("Poziom1");
-        Debug.Log("graj");
     }
 
     public void GoToSettingsMenu()
     {
         SceneManager.LoadScene("ustawienia");
-        Debug.Log("ustawienia");
     }
 
     public void GoToMainMenu()
     {
-        SceneManager.LoadScene("Menu");
+        SceneManager.LoadScene("menu");
     }
 
     public void QuitGame()
