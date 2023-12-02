@@ -47,11 +47,11 @@ public class wieszak : MonoBehaviour
             Collider2D collider2D = GetComponent<Collider2D>();
             Collider2D playerCollider = GameObject.FindGameObjectWithTag("Gracz").GetComponent<Collider2D>();
 
-            PokazKsiazke();
+            Pokazwieszak();
         }
     }
 
-    void PokazKsiazke()
+    void Pokazwieszak()
     {
 
         gameManager.AddPoints(1);

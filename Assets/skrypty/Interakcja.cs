@@ -2,14 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class szafa : MonoBehaviour
+public class Interakcja : MonoBehaviour
 {
     public GameObject klawisz;
     public Animator szafaAnimator;
     public Animator klawiszAnimator;
-    private GameManager gameManager;
+    public string animationName;
 
-    private bool szafaOtwarta = false;
+    protected GameManager gameManager;
+    protected bool otwarte = false;
+    protected static Interakcja currentInteraction;
 
     void Start()
     {
@@ -21,13 +23,14 @@ public class szafa : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (szafaOtwarta == true)
+        if (otwarte == true)
         {
             klawisz.SetActive(false);
         }
         else if (other.CompareTag("Gracz"))
         {
             klawisz.SetActive(true);
+            currentInteraction = this;
         }
     }
 
@@ -41,29 +44,50 @@ public class szafa : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E) && klawisz.activeSelf && !szafaOtwarta)
+        if (Input.GetKeyDown(KeyCode.E) && klawisz.activeSelf && !otwarte && currentInteraction == this)
         {
             // SprawdŸ, czy gracz jest wewn¹trz boxcollidera szafy
             Collider2D collider2D = GetComponent<Collider2D>();
             Collider2D playerCollider = GameObject.FindGameObjectWithTag("Gracz").GetComponent<Collider2D>();
 
-            PokazKsiazke();
+            Pokaz();
+            return;
+        }
+
+        if (Input.GetKeyDown(KeyCode.Escape) && otwarte && currentInteraction == this)
+        {
+            Zamknij();
         }
     }
 
-    void PokazKsiazke()
+    void Pokaz()
     {
         gameManager.AddPoints(1);
 
         // Odtwórz animacjê otwierania szafki
-        szafaAnimator.Play("szafaotwi");
+        if (szafaAnimator)
+        {
+            szafaAnimator.Play(animationName);
+        }
 
         // Odtwórz animacjê naciœniêcia klawisza
         klawiszAnimator.Play("nacisniecie");
 
         klawisz.SetActive(false);
 
+        Otworz();
+
         // Ustaw flagê, aby zablokowaæ ponowne otwieranie szafy
-        szafaOtwarta = true;
+        otwarte = true;
+    }
+
+    protected virtual void Otworz()
+    {
+
+    }
+
+    protected virtual void Zamknij()
+    {
+
     }
 }

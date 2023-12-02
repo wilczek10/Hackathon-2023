@@ -52,9 +52,9 @@ public class GameManager : MonoBehaviour
         Debug.Log("Aktualna liczba punktów: " + points);
 
         // SprawdŸ, czy zdobyto wystarczaj¹c¹ liczbê punktów
-        if (points >= 3)
+        if (points >= 4)
         {
-            OnThreePointsReached();
+            Invoke("OnThreePointsReached", 3f);
             points = 0; // Zresetuj liczbê punktów po wywo³aniu funkcji
         }
     }

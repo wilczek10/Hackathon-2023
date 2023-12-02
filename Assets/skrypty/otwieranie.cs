@@ -47,11 +47,11 @@ public class InterakcjaZSzafaIKsiazka : MonoBehaviour
             Collider2D collider2D = GetComponent<Collider2D>();
             Collider2D playerCollider = GameObject.FindGameObjectWithTag("Gracz").GetComponent<Collider2D>();
 
-            PokazKsiazke();
+            Pokazszafe();
         }
     }
 
-    void PokazKsiazke()
+    void Pokazszafe()
     {
         gameManager.AddPoints(1);
         

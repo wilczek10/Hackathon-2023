@@ -47,11 +47,11 @@ public class buty : MonoBehaviour
             Collider2D collider2D = GetComponent<Collider2D>();
             Collider2D playerCollider = GameObject.FindGameObjectWithTag("Gracz").GetComponent<Collider2D>();
 
-            PokazKsiazke();
+            Pokazbuty();
         }
     }
 
-    void PokazKsiazke()
+    void Pokazbuty()
     {
         gameManager.AddPoints(1);
 
