@@ -3,13 +3,14 @@ using UnityEngine;
 /// <summary>
 /// Player controller and behavior
 /// </summary>
+
 public class PlayerScript : MonoBehaviour
 {
     /// <summary>
     /// The speed of the ship
     /// </summary>
     public float speed = 20f;
-
+    public Animator animator;
     /// <summary>
     /// Store the horizontal movement
     /// </summary>
@@ -22,6 +23,8 @@ public class PlayerScript : MonoBehaviour
 
     void Update()
     {
+        animator.SetFloat("HSpeed", Mathf.Abs(horizontalMovement));
+        animator.SetFloat("VSpeed", Mathf.Abs(verticalMovement));
         // Retrieve axis information
         float inputX = Input.GetAxis("Horizontal");
         float inputY = Input.GetAxis("Vertical");
@@ -46,11 +49,11 @@ public class PlayerScript : MonoBehaviour
         // Flip the sprite based on the horizontal movement
         if (inputX < 0)
         {
-            transform.localScale = new Vector3(-1f, 1f, 1f);
+            transform.localScale = new Vector3(-2.5f, 2.5f, 1f);
         }
         else if (inputX > 0)
         {
-            transform.localScale = new Vector3(1f, 1f, 1f);
+            transform.localScale = new Vector3(2.5f, 2.5f, 1f);
         }
     }
 
