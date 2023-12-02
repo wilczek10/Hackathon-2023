@@ -5,30 +5,34 @@ using UnityEngine;
 public class wieszak : MonoBehaviour
 {
     public GameObject klawisz;
-    public Animator szafaAnimator;
+    public Animator wieszakAnimator;
     public Animator klawiszAnimator;
+    private GameManager gameManager;
 
-    private bool czyKsiazkaOtwarta = false;
+    private bool szafaOtwarta = false;
 
     void Start()
     {
         // Ukryj klawisz na pocz¹tku gry
         klawisz.SetActive(false);
+
+        gameManager = FindObjectOfType<GameManager>();
     }
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        // SprawdŸ, czy gracz wszed³ do boxcollidera szafy
-        if (other.CompareTag("Gracz"))
+        if (szafaOtwarta == true)
+        {
+            klawisz.SetActive(false);
+        }
+        else if (other.CompareTag("Gracz"))
         {
             klawisz.SetActive(true);
-
         }
     }
 
     void OnTriggerExit2D(Collider2D other)
     {
-        // SprawdŸ, czy gracz opuœci³ boxcollider szafy
         if (other.CompareTag("Gracz"))
         {
             klawisz.SetActive(false);
@@ -37,41 +41,29 @@ public class wieszak : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E) && klawisz.activeSelf)
+        if (Input.GetKeyDown(KeyCode.E) && klawisz.activeSelf && !szafaOtwarta)
         {
-            // SprawdŸ, czy gracz jest wewn¹trz boxcollidera stolu
+            // SprawdŸ, czy gracz jest wewn¹trz boxcollidera szafy
             Collider2D collider2D = GetComponent<Collider2D>();
             Collider2D playerCollider = GameObject.FindGameObjectWithTag("Gracz").GetComponent<Collider2D>();
 
-            if (collider2D.bounds.Intersects(playerCollider.bounds))
-            {
-                PokazKsiazke();
-            }
-        }
-
-        // SprawdŸ, czy gracz nacisn¹³ klawisz Esc, czy animacja ksiazki jest uruchomiona i ksiazka jest otwarta
-        if (Input.GetKeyDown(KeyCode.Escape) && czyKsiazkaOtwarta)
-        {
-            ZamknijKsiazke();
+            PokazKsiazke();
         }
     }
 
     void PokazKsiazke()
     {
+        gameManager.AddPoints(1);
+
         // Odtwórz animacjê otwierania szafki
-        szafaAnimator.Play("bez");
+        wieszakAnimator.Play("bez");
 
         // Odtwórz animacjê naciœniêcia klawisza
-        klawiszAnimator.Play("Nacisnij");
+        klawiszAnimator.Play("nacisniecie");
 
-        // Oznacz, ¿e ksi¹¿ka jest otwarta
-        czyKsiazkaOtwarta = true;
-    }
+        klawisz.SetActive(false);
 
-    void ZamknijKsiazke()
-    {
-
-        // Oznacz, ¿e ksi¹¿ka jest zamkniêta
-        czyKsiazkaOtwarta = false;
+        // Ustaw flagê, aby zablokowaæ ponowne otwieranie szafy
+        szafaOtwarta = true;
     }
 }

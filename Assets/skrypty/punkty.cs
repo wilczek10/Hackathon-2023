@@ -2,8 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
+
 public class GameManager : MonoBehaviour
 {
+
+    public Animator drzwiAnimator;
+
+
     private int points = 0;
 
     // Wywo³aj tê funkcjê, gdy gracz zdobywa punkty
@@ -13,7 +19,7 @@ public class GameManager : MonoBehaviour
         Debug.Log("Aktualna liczba punktów: " + points);
 
         // SprawdŸ, czy zdobyto wystarczaj¹c¹ liczbê punktów
-        if (points >= 5)
+        if (points >= 3)
         {
             OnFivePointsReached();
             points = 0; // Zresetuj liczbê punktów po wywo³aniu funkcji
@@ -23,7 +29,8 @@ public class GameManager : MonoBehaviour
     // Ta funkcja zostanie wywo³ana, gdy zdobêdziesz 5 punktów
     private void OnFivePointsReached()
     {
-        Debug.Log("Wywo³ano funkcjê po zdobyciu 5 punktów!");
+        drzwiAnimator.Play("otwieranie");
+        Debug.Log("Wywo³ano funkcjê po zdobyciu 3 punkty!");
         // Tutaj umieœæ kod funkcji, któr¹ chcesz wywo³aæ
     }
 }
