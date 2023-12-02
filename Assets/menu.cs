@@ -7,7 +7,7 @@ public class MainMenu : MonoBehaviour
 {
     public void PlayGame()
     {
-        SceneManager.LoadScene("ScenaCweli");
+        SceneManager.LoadScene("pokoj3");
     }
 
     public void GoToSettingsMenu()

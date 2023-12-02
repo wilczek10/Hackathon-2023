@@ -12,6 +12,9 @@ EditorBuildSettings:
     path: Assets/Scenes/ustawienia.unity
     guid: 0679a12857526d341bac5a8d502bb192
   - enabled: 1
-    path: Assets/Scenes/ScenaCweli.unity
-    guid: aebd6f793dfedb34fa41458c9fa995a3
+    path: Assets/Scenes/pokoj3.unity
+    guid: ddfc4ccb480d3b54b95ee7678ab6131a
+  - enabled: 1
+    path: Assets/Scenes/zakonczenie.unity
+    guid: 9c454b756a9d4304c9e25c12b158080c
   m_configObjects: {}

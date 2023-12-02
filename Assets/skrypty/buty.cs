@@ -7,6 +7,7 @@ public class buty : MonoBehaviour
     public GameObject klawisz;
     public Animator klawiszAnimator;
     private GameManager gameManager;
+    public Animator butyAnimator;
 
     private bool szafaOtwarta = false;
 
@@ -53,6 +54,8 @@ public class buty : MonoBehaviour
     void PokazKsiazke()
     {
         gameManager.AddPoints(1);
+
+        butyAnimator.Play("otw");
 
         // Odtwórz animacjê naciœniêcia klawisza
         klawiszAnimator.Play("nacisniecie");
