@@ -1,16 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PodmianaObiektu : MonoBehaviour
 {
-    public GameObject dziadekWnuczekPrefab; // Przypisz prefab "dziadek-wnuczek" w edytorze Unity
-    public GameObject dziadekBabciaPrefab;   // Przypisz prefab "dziadek-babcia" w edytorze Unity
-    public GameObject trzeciObiektPrefab;    // Przypisz prefab trzeciego obiektu w edytorze Unity
+    public GameObject dziadekWnuczekPrefab;
+    public GameObject dziadekBabciaPrefab;
+    public GameObject trzeciObiektPrefab;
     public Animator koniecAnimator;
 
-    public float czasPodmiany = 5f;        // Czas (w sekundach) miêdzy podmianami
-    public float czasPojawianiaTrzeciegoObiektu = 15f; // Czas (w sekundach) miêdzy pojawianiem siê trzeciego obiektu
+    public float czasPodmiany = 5f;
+    public float czasPojawianiaTrzeciegoObiektu = 15f;
     private float czasDoPodmiany = 0f;
     private float czasDoPojawianiaTrzeciegoObiektu = 0f;
 
@@ -23,11 +24,9 @@ public class PodmianaObiektu : MonoBehaviour
             return;
         }
 
-        // Inicjalizacja czasu do pierwszej podmiany i pierwszego pojawienia siê trzeciego obiektu
         czasDoPodmiany = Time.time + czasPodmiany;
         czasDoPojawianiaTrzeciegoObiektu = Time.time + czasPojawianiaTrzeciegoObiektu;
 
-        // Ustawienie dziadka-wnuczka jako aktywnego, a dziadka-babciê i trzeci obiekt jako nieaktywne na starcie
         dziadekWnuczekPrefab.SetActive(true);
         dziadekBabciaPrefab.SetActive(false);
         trzeciObiektPrefab.SetActive(false);
@@ -35,23 +34,22 @@ public class PodmianaObiektu : MonoBehaviour
 
     private void Update()
     {
-        // Sprawdzanie, czy nadszed³ czas na podmianê obiektu
         if (Time.time >= czasDoPodmiany)
         {
             PodmienObiekt();
-            czasDoPodmiany = Time.time + czasPodmiany; // Aktualizacja czasu do nastêpnej podmiany
+            czasDoPodmiany = Time.time + czasPodmiany;
         }
 
-        // Sprawdzanie, czy nadszed³ czas na pojawienie siê trzeciego obiektu
         if (Time.time >= czasDoPojawianiaTrzeciegoObiektu)
         {
             PojawienieTrzeciegoObiektu();
-            czasDoPojawianiaTrzeciegoObiektu = Time.time + czasPojawianiaTrzeciegoObiektu; // Aktualizacja czasu do nastêpnego pojawienia siê trzeciego obiektu
+            czasDoPojawianiaTrzeciegoObiektu = Time.time + czasPojawianiaTrzeciegoObiektu;
         }
     }
 
     private void PodmienObiekt()
     {
+        //Destroy(dziadekWnuczekPrefab);
         dziadekWnuczekPrefab.SetActive(false);
         dziadekBabciaPrefab.SetActive(true);
         trzeciObiektPrefab.SetActive(false);
@@ -59,11 +57,23 @@ public class PodmianaObiektu : MonoBehaviour
 
     private void PojawienieTrzeciegoObiektu()
     {
+        Destroy(dziadekBabciaPrefab);
+        Destroy(dziadekWnuczekPrefab);
         dziadekWnuczekPrefab.SetActive(false);
         dziadekBabciaPrefab.SetActive(false);
         trzeciObiektPrefab.SetActive(true);
         koniecAnimator.Play("2");
+
+        // Wywo³anie metody przenosz¹cej do sceny "menu" po 5 sekundach
+        Invoke("PrzeniesDoMenu", 5f);
+    }
+
+    private void PrzeniesDoMenu()
+    {
+        // Tutaj przenoszenie do sceny o nazwie "menu"
+        SceneManager.LoadScene("menu");
     }
 }
+
 
 
