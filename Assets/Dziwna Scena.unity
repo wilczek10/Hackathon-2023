@@ -303,8 +303,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 13036f04ad3957247b7b002cea1d57e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  window: {fileID: 711398230}
-  indicator: {fileID: 153050648}
+  Window: {fileID: 711398230}
+  Indicator: {fileID: 153050648}
   dialogueText: {fileID: 1228780037}
   dialogues:
   - "Niemcy Prosz\u0119 Pana"
@@ -492,6 +492,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 7028654359414748879, guid: 974efc0df9fcbaa48b64da202b42f1ac, type: 3}
       insertIndex: -1
       addedObject: {fileID: 242100621}
+    - targetCorrespondingSourceObject: {fileID: 2344983094200637077, guid: 974efc0df9fcbaa48b64da202b42f1ac, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 974efc0df9fcbaa48b64da202b42f1ac, type: 3}
 --- !u!1 &711398230 stripped
 GameObject:
@@ -872,7 +875,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialogueScript: {fileID: 242100621}
-  klawisz: {fileID: 0}
 --- !u!1 &1119600593
 GameObject:
   m_ObjectHideFlags: 0
@@ -1938,6 +1940,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 510762832980d9e49b0b8891e410f677, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tabelka: {fileID: 0}
 --- !u!1 &2144884085
 GameObject:
   m_ObjectHideFlags: 0
