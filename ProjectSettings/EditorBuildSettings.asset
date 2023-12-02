@@ -12,6 +12,6 @@ EditorBuildSettings:
     path: Assets/Scenes/ustawienia.unity
     guid: 0679a12857526d341bac5a8d502bb192
   - enabled: 1
-    path: Assets/Scenes/Poziom1.unity
-    guid: c7c6aacd1d39ddb4f8640df6d769bc11
+    path: Assets/Scenes/ScenaCweli.unity
+    guid: aebd6f793dfedb34fa41458c9fa995a3
   m_configObjects: {}
