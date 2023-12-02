@@ -7,9 +7,9 @@ public class Dialogue : MonoBehaviour
 {
     //Fields
     //Window
-    public GameObject window;
+    public GameObject Window;
     //Indicator
-    public GameObject indicator;
+    public GameObject Indicator;
     //Text component
     public TMP_Text dialogueText;
     //Dialogues list
@@ -33,11 +33,11 @@ public class Dialogue : MonoBehaviour
 
     private void ToggleWindow(bool show)
     {
-        window.SetActive(show);
+        Window.SetActive(show);
     }
     public void ToggleIndicator(bool show)
     {
-        indicator.SetActive(show);
+        Indicator.SetActive(show);
     }
 
     //Start Dialogue
@@ -48,9 +48,9 @@ public class Dialogue : MonoBehaviour
 
         //Boolean to indicate that we have started
         started = true;
-        //Show the window
+        //Show the Window
         ToggleWindow(true);
-        //hide the indicator
+        //hide the Indicator
         ToggleIndicator(false);
         //Start with first dialogue
         GetDialogue(0);
@@ -77,7 +77,7 @@ public class Dialogue : MonoBehaviour
         waitForNext = false;
         //Stop all Ienumerators
         StopAllCoroutines();
-        //Hide the window
+        //Hide the Window
         ToggleWindow(false);        
     }
     //Writing logic
