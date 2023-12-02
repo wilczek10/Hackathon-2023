@@ -7,7 +7,7 @@ public class MainMenu : MonoBehaviour
 {
     public void PlayGame()
     {
-        SceneManager.LoadScene("Dziwna Scena");
+        SceneManager.LoadScene("ScenaCweli");
     }
 
     public void GoToSettingsMenu()
