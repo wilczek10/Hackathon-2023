@@ -12,6 +12,9 @@ EditorBuildSettings:
     path: Assets/Scenes/ustawienia.unity
     guid: 0679a12857526d341bac5a8d502bb192
   - enabled: 1
+    path: Assets/Dziwna Scena.unity
+    guid: ece6b49343f6f0044ac7000ad8b8b127
+  - enabled: 1
     path: Assets/Scenes/pokoj3.unity
     guid: ddfc4ccb480d3b54b95ee7678ab6131a
   - enabled: 1
