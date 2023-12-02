@@ -2,8 +2,12 @@ using UnityEngine;
 
 public class InteractScript : MonoBehaviour
 {
+    public GameObject tabelka;
+
     private Animator animator;
     private bool shouldPlayAnimation = false;
+
+    private int counter = 0;
 
     void Start()
     {
@@ -20,6 +24,11 @@ public class InteractScript : MonoBehaviour
 
             // Ustaw boola w Animatorze
             animator.SetTrigger("Open");
+
+            counter++;
+            if(counter == 2){
+                tabelka.SetActive(true);
+            }
         }
     }
 }
