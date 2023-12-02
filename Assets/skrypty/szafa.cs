@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class InterakcjaZSzafaIKsiazka : MonoBehaviour
+public class szafa : MonoBehaviour
 {
     public GameObject klawisz;
     public Animator szafaAnimator;
@@ -15,9 +15,9 @@ public class InterakcjaZSzafaIKsiazka : MonoBehaviour
     {
         // Ukryj klawisz na pocz¹tku gry
         klawisz.SetActive(false);
-        
+
         gameManager = FindObjectOfType<GameManager>();
-}
+    }
 
     void OnTriggerEnter2D(Collider2D other)
     {
@@ -54,9 +54,9 @@ public class InterakcjaZSzafaIKsiazka : MonoBehaviour
     void PokazKsiazke()
     {
         gameManager.AddPoints(1);
-        
+
         // Odtwórz animacjê otwierania szafki
-        szafaAnimator.Play("otwieranie");
+        szafaAnimator.Play("szafaotwi");
 
         // Odtwórz animacjê naciœniêcia klawisza
         klawiszAnimator.Play("nacisniecie");

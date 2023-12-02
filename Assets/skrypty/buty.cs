@@ -55,7 +55,7 @@ public class buty : MonoBehaviour
     {
         gameManager.AddPoints(1);
 
-        butyAnimator.Play("otw");
+        butyAnimator.Play("butyotwi");
 
         // Odtwórz animacjê naciœniêcia klawisza
         klawiszAnimator.Play("nacisniecie");

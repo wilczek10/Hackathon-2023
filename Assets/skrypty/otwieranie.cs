@@ -2,10 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class wieszak : MonoBehaviour
+public class InterakcjaZSzafaIKsiazka : MonoBehaviour
 {
     public GameObject klawisz;
-    public Animator wieszakAnimator;
+    public Animator szafaAnimator;
     public Animator klawiszAnimator;
     private GameManager gameManager;
 
@@ -15,9 +15,9 @@ public class wieszak : MonoBehaviour
     {
         // Ukryj klawisz na pocz¹tku gry
         klawisz.SetActive(false);
-
+        
         gameManager = FindObjectOfType<GameManager>();
-    }
+}
 
     void OnTriggerEnter2D(Collider2D other)
     {
@@ -53,11 +53,10 @@ public class wieszak : MonoBehaviour
 
     void PokazKsiazke()
     {
-
         gameManager.AddPoints(1);
-
+        
         // Odtwórz animacjê otwierania szafki
-        wieszakAnimator.Play("bezczapki");
+        szafaAnimator.Play("szafaotwi");
 
         // Odtwórz animacjê naciœniêcia klawisza
         klawiszAnimator.Play("nacisniecie");
