@@ -7,26 +7,34 @@ public class DialogueTrigger : MonoBehaviour
 
     public Dialogue dialogueScript;
     private bool playerDetected;
+    public GameObject klawisz;
     //cos.object.SetActive
     //Detect trigger with player
-    private void OnTriggerEnter2D(Collider2D collision)
+
+    private void Start()
+    {
+        klawisz.SetActive(false);
+    }
+    private void OnTriggerEnter2D(Collider2D other)
     {
         //If we triggerd the player enable playerdeteced and show indicator
-        if(collision.tag == "Player")
+        if(other.CompareTag("Gracz"))
         {
             playerDetected = true;
             dialogueScript.ToggleIndicator(playerDetected);
+            klawisz.SetActive(true);
         }
     }
 
-    private void OnTriggerExit2D(Collider2D collision)
+    private void OnTriggerExit2D(Collider2D other)
     {
         //If we lost trigger  with the player disable playerdeteced and hide indicator
-        if (collision.tag == "Player")
+        if (other.CompareTag("Gracz"))
         {
             playerDetected = false;
             dialogueScript.ToggleIndicator(playerDetected);
             dialogueScript.EndDialogue();
+            klawisz.SetActive(false);
         }
     }
     //While detected if we interact start the dialogue
