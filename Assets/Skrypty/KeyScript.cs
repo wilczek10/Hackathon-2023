@@ -11,7 +11,7 @@ public class KeyScript : MonoBehaviour
             Destroy(gameObject);
 
             // Przejdź do drugiej sceny
-            SceneManager.LoadScene("pokoj3"); // Zastąp "NazwaDrugiejSceny" nazwą drugiej sceny
+            SceneManager.LoadScene("Poziom 2"); // Zastąp "NazwaDrugiejSceny" nazwą drugiej sceny
         }
     }
 }
